@@ -28,6 +28,13 @@
             font-size: 24px; /* Ajusta el tamaño del título según tus preferencias */
             margin: 0; /* Elimina el margen predeterminado del título */
         }
+        #iframeContainer {
+            width: 100%; /* Ocupar todo el ancho disponible */
+        }
+        #iframeContainer iframe {
+            width: 100%; /* Ajustar el ancho del iframe al 100% del contenedor */
+            height: 500px; /* Puedes ajustar la altura según tus necesidades */
+        }
     </style>
 </head>
 <body>
@@ -42,12 +49,9 @@
     <div id="iframeContainer" style="display: none;">
         <h2>Abanca Corporativo Completo Quarter</h2>
         <iframe title="Cover Pool Information"
-                width="100%"
-                height="500px"
                 src="https://app.powerbi.com/reportEmbed?reportId=81ee266a-2799-4577-bba8-8f96aa531bdf&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
                 frameborder="0"
-                allowFullScreen="true"
-                style="width: 100%; height: 500px;">
+                allowFullScreen="true">
         </iframe>
     </div>
 
