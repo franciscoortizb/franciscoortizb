@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Covered Bonds Investor Presentation</title>
+</head>
+<body>
+    <h1>Protected Content</h1>
+    <p>This content is protected. Please enter the password to continue.</p>
+    <input type="password" id="passwordInput" placeholder="Enter Password">
+    <button onclick="checkPassword()">Enter</button>
+    <div id="iframeContainer" style="display: none;">
+        <h2>Abanca Corporativo Completo Quarter</h2>
+        <iframe title="Abanca Corporativo Completo Quarter"
+                width="100%"
+                height="500px"
+                src="https://app.powerbi.com/reportEmbed?reportId=81ee266a-2799-4577-bba8-8f96aa531bdf&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
+                frameborder="0"
+                allowFullScreen="true"
+                style="width: 100%; height: 500px;">
+        </iframe>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("passwordInput").value;
+            if (password === "Beka") {
+                document.getElementById("iframeContainer").style.display = "block";
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
