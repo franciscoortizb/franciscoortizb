@@ -38,6 +38,13 @@
         #iframeContainer h2 {
             margin-left: 20px; /* Ajustar el margen izquierdo para separar del lado izquierdo de la pantalla */
         }
+        .password-container {
+            display: flex;
+            align-items: center;
+        }
+        .password-container input {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -48,7 +55,10 @@
     <div>
         <p>Protected Content. Please enter the password to continue.</p>
     </div>
-    <input type="password" id="passwordInput" placeholder="Enter Password"><button onclick="checkPassword()">Enter</button>
+    <div class="password-container">
+        <input type="password" id="passwordInput" placeholder="Enter Password">
+        <button onclick="checkPassword()">Enter</button>
+    </div>
     <div id="iframeContainer" style="display: none;">
         <h2>Abanca Corporativo Completo Quarter</h2>
         <iframe title="Cover Pool Information"
@@ -67,14 +77,6 @@
                 alert("Incorrect password. Please try again.");
             }
         }
-
-        // Agregar el evento de escucha para la tecla "Enter"
-        document.getElementById("passwordInput").addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) { // 13 es el código de tecla para "Enter"
-                event.preventDefault();
-                checkPassword();
-            }
-        });
     </script>
 </body>
 </html>
