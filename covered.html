@@ -41,6 +41,7 @@
         .password-container {
             display: flex;
             align-items: center;
+            margin-top: 10px; /* Ajustar el margen superior para centrar el contenedor */
         }
         .password-container input {
             margin-right: 10px;
@@ -55,7 +56,7 @@
     <div id="passwordPrompt">
         <p>Protected Content. Please enter the password to continue.</p>
         <div class="password-container">
-            <input type="password" id="passwordInput" placeholder="Enter Password">
+            <input type="password" id="passwordInput" placeholder="Enter Password" onkeydown="handleKeyPress(event)">
             <button onclick="checkPassword()">Enter</button>
         </div>
     </div>
@@ -76,6 +77,13 @@
                 document.getElementById("iframeContainer").style.display = "block";
             } else {
                 alert("Incorrect password. Please try again.");
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.keyCode === 13) { // 13 es el código de tecla para "Enter"
+                event.preventDefault();
+                checkPassword();
             }
         }
     </script>
