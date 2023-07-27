@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             flex-direction: column;
-            transform: scale(1.5); /* Aumentar el tamaño al doble */
+            /* transform: scale(1.5); */ /* Eliminar esta línea para mostrar el contenido en su tamaño original */
             transform-origin: center; /* Centrar el punto de transformación */
         }
         .header {
@@ -33,7 +33,7 @@
         }
         #iframeContainer iframe {
             width: 100%; /* Ajustar el ancho del iframe al 100% del contenedor */
-            height: 500px; /* Puedes ajustar la altura según tus necesidades */
+            height: calc(100vh - 50px); /* Ajustar la altura para que ocupe toda la pantalla excepto la altura de la imagen del header */
         }
     </style>
 </head>
