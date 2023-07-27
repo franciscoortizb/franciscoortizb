@@ -67,7 +67,14 @@
                 alert("Incorrect password. Please try again.");
             }
         }
+
+        // Agregar el evento de escucha para la tecla "Enter"
+        document.getElementById("passwordInput").addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) { // 13 es el código de tecla para "Enter"
+                event.preventDefault();
+                checkPassword();
+            }
+        });
     </script>
 </body>
 </html>
-
