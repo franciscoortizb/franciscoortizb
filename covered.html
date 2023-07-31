@@ -3,7 +3,7 @@
 <head>
     <title>Covered Bonds Investor Presentation</title>
     <!-- Agregar el enlace al favicon -->
-    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <link rel="icon" type="image/x-icon" href="logo.ico">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,7 +20,7 @@
         .header {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between; /* Alinear los elementos en los extremos */
             background-color: #f2f2f2; /* Color de fondo gris claro */
             padding: 10px; /* Espacio alrededor del contenido */
             width: 100%; /* Ocupar todo el ancho disponible */
@@ -34,28 +34,38 @@
             font-size: 24px; /* Ajusta el tamaño del título según tus preferencias */
             margin: 0; /* Elimina el margen predeterminado del título */
         }
-        #iframeContainer {
-            width: 100%; /* Ocupar todo el ancho disponible */
-        }
-        #iframeContainer iframe {
-            width: 100%; /* Ajustar el ancho del iframe al 100% del contenedor */
-            height: calc(100vh - 50px); /* Ajustar la altura para que ocupe toda la pantalla excepto la altura de la imagen del header */
-        }
-        #iframeContainer h2 {
-            margin-left: 20px; /* Ajustar el margen izquierdo para separar del lado izquierdo de la pantalla */
-        }
-        .password-container {
+        /* Estilos para el botón de tres rayas horizontales */
+        .menu-button {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin-top: 10px; /* Ajustar el margen superior para centrar el contenedor */
+            justify-content: space-between;
+            width: 25px;
+            height: 18px;
+            cursor: pointer;
         }
-        .password-container input {
-            margin: 5px; /* Ajustar el margen del campo de entrada */
-            padding-left: 30px; /* Agregar un espaciado a la izquierda para mostrar la imagen del logo dentro del campo */
-            width: 200px; /* Ajustar el ancho del campo de entrada */
-            background: url('logo.jpg') no-repeat left center; /* Agregar la imagen del logo como fondo del campo de entrada */
-            background-size: 20px; /* Ajustar el tamaño de la imagen del logo */
+        .menu-button span {
+            width: 100%;
+            height: 3px;
+            background-color: black;
+        }
+        /* Estilos para el desplegable */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 50px; /* Ajusta la distancia desde el header hasta el desplegable */
+            right: 10px; /* Ajusta la distancia desde el borde derecho */
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .dropdown-content h3 {
+            margin-top: 0;
+        }
+        /* Muestra el desplegable cuando está activo */
+        .dropdown-content.active {
+            display: block;
         }
     </style>
 </head>
@@ -63,7 +73,21 @@
     <div class="header">
         <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
         <h1>Covered Bonds Investor Presentation</h1>
+        <!-- Botón de tres rayas horizontales -->
+        <div class="menu-button" onclick="toggleDropdown()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
+    <!-- Desplegable -->
+    <div class="dropdown-content" id="dropdownContent">
+        <h3>Investor Presentations</h3>
+        <p>Presentación 1</p>
+        <p>Presentación 2</p>
+        <!-- Agrega más elementos del menú aquí -->
+    </div>
+
     <div id="passwordPrompt">
         <p>Protected Content. Please enter the password to continue.</p>
         <div class="password-container">
@@ -96,6 +120,11 @@
                 event.preventDefault();
                 checkPassword();
             }
+        }
+
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdownContent");
+            dropdownContent.classList.toggle("active");
         }
     </script>
 </body>
