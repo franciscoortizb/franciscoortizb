@@ -33,41 +33,6 @@
             font-size: 24px; /* Ajusta el tamaño del título según tus preferencias */
             margin: 0; /* Elimina el margen predeterminado del título */
         }
-        /* Estilos para el botón de tres rayas horizontales */
-        .menu-button {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 25px;
-            height: 18px;
-            cursor: pointer;
-            /* Amplio margen a la derecha */
-            margin-right: 15px;
-        }
-        .menu-button span {
-            width: 100%;
-            height: 3px;
-            background-color: black;
-        }
-        /* Estilos para el desplegable */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 50px; /* Ajusta la distancia desde el header hasta el desplegable */
-            right: 10px; /* Ajusta la distancia desde el borde derecho */
-            background-color: #f9f9f9;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            z-index: 1;
-        }
-        .dropdown-content h3 {
-            margin-top: 0;
-        }
-        /* Muestra el desplegable cuando está activo */
-        .dropdown-content.active {
-            display: block;
-        }
         /* Ajustar el tamaño del título "Abanca Corporativo Completo Quarter" */
         .presentation-title {
             font-size: 18px;
@@ -98,31 +63,12 @@
         #selectReportContainer select {
             margin-top: 10px;
         }
-        /* Estilos para el desplegable de informes */
-        .dropdown-content ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .dropdown-content li {
-            cursor: pointer;
-            padding: 5px;
-        }
-        .dropdown-content li:hover {
-            background-color: #f2f2f2;
-        }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
         <h1>Covered Bonds Investor Presentation</h1>
-        <!-- Botón de tres rayas horizontales oculto inicialmente -->
-        <div class="menu-button" id="menuButton" style="display: none;" onclick="toggleDropdown()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
     </div>
 
     <div id="passwordPrompt">
@@ -131,16 +77,6 @@
             <input type="password" id="passwordInput" placeholder="Enter Password" onkeydown="handleKeyPress(event)">
             <button onclick="checkPassword()">Enter</button>
         </div>
-    </div>
-
-    <!-- Desplegable de informes -->
-    <div class="dropdown-content" id="reportDropdown">
-        <h3>Select Report</h3>
-        <ul>
-            <li onclick="showReport('quarterly')">Quarterly</li>
-            <li onclick="showReport('monthly')">Monthly</li>
-            <!-- Agrega más opciones de informes aquí -->
-        </ul>
     </div>
 
     <!-- Pantalla de selección de informes -->
@@ -180,7 +116,7 @@
             var password = document.getElementById("passwordInput").value;
             if (password === "Beka") {
                 document.getElementById("passwordPrompt").style.display = "none";
-                document.getElementById("menuButton").style.display = "block"; // Mostrar el botón de tres rayas horizontales
+                document.getElementById("selectReportContainer").style.display = "flex"; // Mostrar la pantalla de selección de informes
                 passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
             } else {
                 alert("Incorrect password. Please try again.");
@@ -194,23 +130,20 @@
             }
         }
 
-        function toggleDropdown() {
-            var reportDropdown = document.getElementById("reportDropdown");
-            reportDropdown.classList.toggle("active");
-        }
-
-        function showReport(report) {
-            var reportDropdown = document.getElementById("reportDropdown");
-            reportDropdown.classList.remove("active");
-
-            // Mostrar el informe seleccionado
-            if (report === "quarterly") {
+        function changeReport() {
+            var reportSelect = document.getElementById("reportSelect");
+            var selectedReport = reportSelect.value;
+            if (selectedReport === "quarterly") {
                 document.getElementById("quarterlyContainer").style.display = "block";
                 document.getElementById("monthlyContainer").style.display = "none";
-            } else if (report === "monthly") {
+            } else if (selectedReport === "monthly") {
                 document.getElementById("quarterlyContainer").style.display = "none";
                 document.getElementById("monthlyContainer").style.display = "block";
             }
+        }
+
+        function closeSelectReportContainer() {
+            document.getElementById("selectReportContainer").style.display = "none";
         }
     </script>
 </body>
