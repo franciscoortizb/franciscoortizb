@@ -20,8 +20,7 @@
         .header {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Alinear el contenido al extremo derecho e izquierdo */
-            /* Alinear el contenido en el centro verticalmente */
+            justify-content: center; /* Centrar horizontalmente el contenido */
             background-color: #f2f2f2; /* Color de fondo gris claro */
             padding: 10px; /* Espacio alrededor del contenido */
             width: 100%; /* Ocupar todo el ancho disponible */
@@ -29,7 +28,7 @@
         .header img {
             width: 50px; /* Ajusta el ancho de la imagen según tus preferencias */
             height: auto;
-            margin-left: 20px; /* Espacio entre la imagen y el texto */
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
         }
         .header h1 {
             font-size: 24px; /* Ajusta el tamaño del título según tus preferencias */
@@ -74,11 +73,11 @@
         .presentation-title {
             font-size: 18px;
             margin-top: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
         }
         /* Estilos para el iframe */
         #iframeContainer {
-            width: 95%; /* Ocupar todo el ancho disponible */
+            width: 100%; /* Ocupar todo el ancho disponible */
         }
         #iframeContainer iframe {
             width: 100%; /* Ajustar el ancho del iframe al 100% del contenedor */
@@ -90,14 +89,36 @@
     <div class="header">
         <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
         <h1>Covered Bonds Investor Presentation</h1>
-        <!-- Botón de tres rayas horizontales oculto inicialmente -->
-        <div class="menu-button" id="menuButton" style="display: none;" onclick="toggleDropdown()">
+        <!-- Botón de tres rayas horizontales -->
+        <div class="menu-button" onclick="toggleDropdown()">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
-    <!-- Desplegable y resto del código permanecen sin cambios -->
+    <!-- Desplegable -->
+    <div class="dropdown-content" id="dropdownContent">
+        <h3>Investor Presentations</h3>
+        <p>Presentación 1</p>
+        <p>Presentación 2</p>
+        <!-- Agrega más elementos del menú aquí -->
+    </div>
+
+    <div id="passwordPrompt">
+        <p>Protected Content. Please enter the password to continue.</p>
+        <div class="password-container">
+            <input type="password" id="passwordInput" placeholder="Enter Password" onkeydown="handleKeyPress(event)">
+            <button onclick="checkPassword()">Enter</button>
+        </div>
+    </div>
+    <div id="iframeContainer" style="display: none;">
+        <h2 class="presentation-title">Abanca Corporativo Completo Quarter</h2>
+        <iframe title="Cover Pool Information"
+                src="https://app.powerbi.com/reportEmbed?reportId=81ee266a-2799-4577-bba8-8f96aa531bdf&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
+                frameborder="0"
+                allowFullScreen="true">
+        </iframe>
+    </div>
 
     <script>
         function checkPassword() {
