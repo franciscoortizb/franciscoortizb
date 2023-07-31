@@ -14,7 +14,6 @@
             margin: 0;
             padding: 0;
             flex-direction: column;
-            /* transform: scale(1.5); */ /* Eliminar esta línea para mostrar el contenido en su tamaño original */
             transform-origin: center; /* Centrar el punto de transformación */
         }
         .header {
@@ -45,7 +44,7 @@
             cursor: pointer;
             /* Amplio margen a la derecha */
             margin-right: 15px;
-            margin-left: 600px;
+            right: 15px; /* Ajusta la posición a la derecha */
         }
         .menu-button span {
             width: 100%;
@@ -91,8 +90,8 @@
     <div class="header">
         <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
         <h1>Covered Bonds Investor Presentation</h1>
-        <!-- Botón de tres rayas horizontales -->
-        <div class="menu-button" onclick="toggleDropdown()">
+        <!-- Botón de tres rayas horizontales oculto inicialmente -->
+        <div class="menu-button" id="menuButton" style="display: none;" onclick="toggleDropdown()">
             <span></span>
             <span></span>
             <span></span>
@@ -101,8 +100,8 @@
     <!-- Desplegable -->
     <div class="dropdown-content" id="dropdownContent">
         <h3>Investor Presentations</h3>
-        <p>Presentación 1</p>
-        <p>Presentación 2</p>
+        <p onclick="showQuarterly()">Quarterly</p>
+        <p onclick="showMonthly()">Monthly</p>
         <!-- Agrega más elementos del menú aquí -->
     </div>
 
@@ -113,10 +112,18 @@
             <button onclick="checkPassword()">Enter</button>
         </div>
     </div>
-    <div id="iframeContainer" style="display: none;">
+    <div id="quarterlyContainer" style="display: none;">
         <h2 class="presentation-title">Abanca Corporativo Completo Quarter</h2>
         <iframe title="Cover Pool Information"
                 src="https://app.powerbi.com/reportEmbed?reportId=81ee266a-2799-4577-bba8-8f96aa531bdf&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
+                frameborder="0"
+                allowFullScreen="true">
+        </iframe>
+    </div>
+    <div id="monthlyContainer" style="display: none;">
+        <h2 class="presentation-title">Abanca Corporativo Completo Month</h2>
+        <iframe title="Cover Pool Information"
+                src="https://app.powerbi.com/reportEmbed?reportId=0fc44c3d-8e91-4312-8000-b10d3dc820bd&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
                 frameborder="0"
                 allowFullScreen="true">
         </iframe>
@@ -128,22 +135,26 @@
             if (password === "Beka") {
                 document.getElementById("passwordPrompt").style.display = "none";
                 document.getElementById("iframeContainer").style.display = "block";
+                document.getElementById("menuButton").style.display = "block"; // Mostrar el botón de tres rayas horizontales
             } else {
                 alert("Incorrect password. Please try again.");
             }
         }
 
-        function handleKeyPress(event) {
-            if (event.keyCode === 13) { // 13 es el código de tecla para "Enter"
-                event.preventDefault();
-                checkPassword();
-            }
+        // Funciones para mostrar Quarterly y Monthly
+        function showQuarterly() {
+            document.getElementById("quarterlyContainer").style.display = "block";
+            document.getElementById("monthlyContainer").style.display = "none";
+            toggleDropdown();
         }
 
-        function toggleDropdown() {
-            var dropdownContent = document.getElementById("dropdownContent");
-            dropdownContent.classList.toggle("active");
+        function showMonthly() {
+            document.getElementById("monthlyContainer").style.display = "block";
+            document.getElementById("quarterlyContainer").style.display = "none";
+            toggleDropdown();
         }
+
+        // Resto de las funciones JavaScript permanecen sin cambios
 
         // Agregar evento de clic al documento para cerrar el desplegable cuando se hace clic en cualquier otro lugar
         document.addEventListener("click", function(event) {
