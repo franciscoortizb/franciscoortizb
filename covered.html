@@ -122,17 +122,27 @@
     </div>
 
     <script>
-        // Agregar evento de clic al documento para cerrar el desplegable cuando se hace clic en cualquier otro lugar
-        document.addEventListener("click", function(event) {
-            var dropdownContent = document.getElementById("dropdownContent");
-            var menuButton = document.querySelector(".menu-button");
-            if (event.target !== dropdownContent && event.target !== menuButton) {
-                dropdownContent.classList.remove("active");
+        function checkPassword() {
+            var password = document.getElementById("passwordInput").value;
+            if (password === "Beka") {
+                document.getElementById("passwordPrompt").style.display = "none";
+                document.getElementById("iframeContainer").style.display = "block";
+            } else {
+                alert("Incorrect password. Please try again.");
             }
-        });
+        }
 
-        // Resto de las funciones JavaScript permanecen sin cambios
+        function handleKeyPress(event) {
+            if (event.keyCode === 13) { // 13 es el código de tecla para "Enter"
+                event.preventDefault();
+                checkPassword();
+            }
+        }
+
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdownContent");
+            dropdownContent.classList.toggle("active");
+        }
     </script>
 </body>
 </html>
-
