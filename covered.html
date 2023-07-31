@@ -9,6 +9,13 @@
             font-family: Arial, sans-serif;
             margin: 0; /* Eliminamos márgenes predeterminados */
         }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
         .header {
             display: flex;
             align-items: center;
@@ -31,7 +38,6 @@
             font-size: 18px;
             margin-top: 20px;
             margin-bottom: 5px;
-            margin-left: 20px;
         }
         /* Estilos para el iframe */
         #iframeContainer {
@@ -63,90 +69,91 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
-        <h1>Covered Bonds Investor Presentation</h1>
-    </div>
-
-    <div id="passwordPrompt">
-        <p>Protected Content. Please enter the password to continue.</p>
-        <div class="password-container">
-            <input type="password" id="passwordInput" placeholder="Enter Password" onkeydown="handleKeyPress(event)">
-            <button onclick="checkPassword()">Enter</button>
+    <div class="container">
+        <div class="header">
+            <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
+            <h1>Covered Bonds Investor Presentation</h1>
         </div>
-    </div>
 
-    <!-- Pantalla de selección de informes -->
-    <div id="selectReportContainer">
-        <h2>Select Report</h2>
-        <select id="reportSelect" onchange="changeReport()">
-            <option value="quarterly">Quarterly</option>
-            <option value="monthly">Monthly</option>
-            <!-- Agrega más opciones de informes aquí -->
-        </select>
-        <button onclick="closeSelectReportContainer()">Go</button>
-    </div>
-
-    <!-- Contenedor para Abanca Corporativo Completo Quarter -->
-    <div id="quarterlyContainer" style="display: none;">
-        <h2 class="presentation-title">Abanca Corporativo Completo Quarter</h2>
-        <div id="iframeContainer">
-            <iframe title="Cover Pool Information Quarterly"
-                    src="https://app.powerbi.com/reportEmbed?reportId=81ee266a-2799-4577-bba8-8f96aa531bdf&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
-                    frameborder="0"
-                    allowFullScreen="true">
-            </iframe>
+        <div id="passwordPrompt">
+            <p>Protected Content. Please enter the password to continue.</p>
+            <div class="password-container">
+                <input type="password" id="passwordInput" placeholder="Enter Password" onkeydown="handleKeyPress(event)">
+                <button onclick="checkPassword()">Enter</button>
+            </div>
         </div>
-    </div>
-    <!-- Contenedor para Abanca Corporativo Completo Month -->
-    <div id="monthlyContainer" style="display: none;">
-        <h2 class="presentation-title">Abanca Corporativo Completo Month</h2>
-        <div id="iframeContainer">
-            <iframe title="Cover Pool Information Monthly"
-                    src="https://app.powerbi.com/reportEmbed?reportId=0fc44c3d-8e91-4312-8000-b10d3dc820bd&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
-                    frameborder="0"
-                    allowFullScreen="true">
-            </iframe>
+
+        <!-- Pantalla de selección de informes -->
+        <div id="selectReportContainer">
+            <h2>Select Report</h2>
+            <select id="reportSelect" onchange="changeReport()">
+                <option value="quarterly">Quarterly</option>
+                <option value="monthly">Monthly</option>
+                <!-- Agrega más opciones de informes aquí -->
+            </select>
+            <button onclick="closeSelectReportContainer()">Go</button>
         </div>
+
+        <!-- Contenedor para Abanca Corporativo Completo Quarter -->
+        <div id="quarterlyContainer" style="display: none;">
+            <h2 class="presentation-title">Abanca Corporativo Completo Quarter</h2>
+            <div id="iframeContainer">
+                <iframe title="Cover Pool Information Quarterly"
+                        src="https://app.powerbi.com/reportEmbed?reportId=81ee266a-2799-4577-bba8-8f96aa531bdf&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
+                        frameborder="0"
+                        allowFullScreen="true">
+                </iframe>
+            </div>
+        </div>
+        <!-- Contenedor para Abanca Corporativo Completo Month -->
+        <div id="monthlyContainer" style="display: none;">
+            <h2 class="presentation-title">Abanca Corporativo Completo Month</h2>
+            <div id="iframeContainer">
+                <iframe title="Cover Pool Information Monthly"
+                        src="https://app.powerbi.com/reportEmbed?reportId=0fc44c3d-8e91-4312-8000-b10d3dc820bd&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
+                        frameborder="0"
+                        allowFullScreen="true">
+                </iframe>
+            </div>
+        </div>
+
+        <script>
+            var passwordEntered = false; // Variable para saber si se ha introducido correctamente la contraseña
+
+            function checkPassword() {
+                var password = document.getElementById("passwordInput").value;
+                if (password === "Beka") {
+                    document.getElementById("passwordPrompt").style.display = "none";
+                    document.getElementById("selectReportContainer").style.display = "flex"; // Mostrar la pantalla de selección de informes
+                    passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
+                } else {
+                    alert("Incorrect password. Please try again.");
+                }
+            }
+
+            function handleKeyPress(event) {
+                if (event.keyCode === 13) { // 13 es el código de tecla para "Enter"
+                    event.preventDefault();
+                    checkPassword();
+                }
+            }
+
+            function changeReport() {
+                var reportSelect = document.getElementById("reportSelect");
+                var selectedReport = reportSelect.value;
+                if (selectedReport === "quarterly") {
+                    document.getElementById("quarterlyContainer").style.display = "block";
+                    document.getElementById("monthlyContainer").style.display = "none";
+                } else if (selectedReport === "monthly") {
+                    document.getElementById("quarterlyContainer").style.display = "none";
+                    document.getElementById("monthlyContainer").style.display = "block";
+                }
+            }
+
+            function closeSelectReportContainer() {
+                document.getElementById("selectReportContainer").style.display = "none";
+            }
+        </script>
     </div>
-
-    <script>
-        var passwordEntered = false; // Variable para saber si se ha introducido correctamente la contraseña
-
-        function checkPassword() {
-            var password = document.getElementById("passwordInput").value;
-            if (password === "Beka") {
-                document.getElementById("passwordPrompt").style.display = "none";
-                document.getElementById("selectReportContainer").style.display = "flex"; // Mostrar la pantalla de selección de informes
-                passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
-            } else {
-                alert("Incorrect password. Please try again.");
-            }
-        }
-
-        function handleKeyPress(event) {
-            if (event.keyCode === 13) { // 13 es el código de tecla para "Enter"
-                event.preventDefault();
-                checkPassword();
-            }
-        }
-
-        function changeReport() {
-            var reportSelect = document.getElementById("reportSelect");
-            var selectedReport = reportSelect.value;
-            if (selectedReport === "quarterly") {
-                document.getElementById("quarterlyContainer").style.display = "block";
-                document.getElementById("monthlyContainer").style.display = "none";
-            } else if (selectedReport === "monthly") {
-                document.getElementById("quarterlyContainer").style.display = "none";
-                document.getElementById("monthlyContainer").style.display = "block";
-            }
-        }
-
-        function closeSelectReportContainer() {
-            document.getElementById("selectReportContainer").style.display = "none";
-        }
-    </script>
 </body>
 </html>
-
