@@ -82,7 +82,7 @@
         #menuButton {
             width: 30px;
             height: 30px;
-            display: flex;
+            display: none; /* Ocultar el botón inicialmente */
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
@@ -93,6 +93,11 @@
             height: 3px;
             background-color: #333;
             border-radius: 2px;
+        }
+
+        /* Estilos para mostrar el botón después de ingresar correctamente la contraseña */
+        .show-menu #menuButton {
+            display: flex;
         }
     </style>
 </head>
@@ -158,7 +163,7 @@
                 var password = document.getElementById("passwordInput").value;
                 if (password === "Beka") {
                     document.getElementById("passwordPrompt").style.display = "none";
-                    document.getElementById("selectReportContainer").style.display = "flex"; // Mostrar la pantalla de selección de informes
+                    document.getElementById("selectReportContainer").classList.add("show-menu"); // Mostrar la pantalla de selección de informes y habilitar el botón del menú
                     passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
                 } else {
                     alert("Incorrect password. Please try again.");
@@ -185,6 +190,7 @@
             }
 
             function closeSelectReportContainer() {
+                document.getElementById("selectReportContainer").classList.remove("show-menu"); // Ocultar el menú desplegable antes de cerrar la pantalla de selección de informes
                 document.getElementById("selectReportContainer").style.display = "none";
             }
 
