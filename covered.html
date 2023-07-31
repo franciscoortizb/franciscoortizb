@@ -38,6 +38,19 @@
             font-size: 18px;
             margin-top: 20px;
             margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .presentation-title a {
+            margin-left: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
         }
         /* Estilos para el iframe */
         #iframeContainer {
@@ -73,18 +86,6 @@
             margin: 20px;
             margin-bottom: 70px; /* Agregar margen inferior de 50px */
         }
-        /* Estilos para el botón de descarga */
-        .download-button {
-            margin-top: 10px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 14px;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -116,7 +117,7 @@
 
         <!-- Contenedor para Abanca Corporativo Completo Quarter -->
         <div id="quarterlyContainer" style="display: none;">
-            <h2 class="presentation-title">Cover Pool Quarterly Information</h2>
+            <h2 class="presentation-title">Cover Pool Quarterly Information<a class="download-button" href="https://acgalacapital-my.sharepoint.com/:p:/g/personal/fortiz_bekafinance_com/EdIDpbzTg7ZNtvkuzlB2AaIB4CxA0qpSX1QkZzMKFrEeXw?e=ePpVBt" download>Download PowerPoint</a></h2>
             <div id="iframeContainer">
                 <iframe title="Cover Pool Quarterly Information"
                         src="https://app.powerbi.com/reportEmbed?reportId=81ee266a-2799-4577-bba8-8f96aa531bdf&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
@@ -124,11 +125,10 @@
                         allowFullScreen="true">
                 </iframe>
             </div>
-            <a class="download-button" href="https://acgalacapital-my.sharepoint.com/:p:/g/personal/fortiz_bekafinance_com/EdIDpbzTg7ZNtvkuzlB2AaIB4CxA0qpSX1QkZzMKFrEeXw?e=ePpVBt" download>Download PowerPoint</a>
         </div>
         <!-- Contenedor para Abanca Corporativo Completo Month -->
         <div id="monthlyContainer" style="display: none;">
-            <h2 class="presentation-title">Cover Pool Monthly Information</h2>
+            <h2 class="presentation-title">Cover Pool Monthly Information<a class="download-button" href="https://acgalacapital-my.sharepoint.com/:p:/g/personal/fortiz_bekafinance_com/EdIDpbzTg7ZNtvkuzlB2AaIB4CxA0qpSX1QkZzMKFrEeXw?e=ePpVBt" download>Download PowerPoint</a></h2>
             <div id="iframeContainer">
                 <iframe title="Cover Pool Monthly Information"
                         src="https://app.powerbi.com/reportEmbed?reportId=0fc44c3d-8e91-4312-8000-b10d3dc820bd&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
@@ -136,7 +136,6 @@
                         allowFullScreen="true">
                 </iframe>
             </div>
-            <a class="download-button" href="https://acgalacapital-my.sharepoint.com/:p:/g/personal/fortiz_bekafinance_com/EdIDpbzTg7ZNtvkuzlB2AaIB4CxA0qpSX1QkZzMKFrEeXw?e=ePpVBt" download>Download PowerPoint</a>
         </div>
 
         <script>
