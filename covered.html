@@ -166,7 +166,6 @@
                 var password = document.getElementById("passwordInput").value;
                 if (password === "Beka") {
                     document.getElementById("passwordPrompt").style.display = "none";
-                    document.getElementById("menuButton").style.display = "block"; // Mostrar el botón del menú
                     document.getElementById("selectReportContainer").classList.add("show-menu"); // Mostrar la pantalla de selección de informes y habilitar el botón del menú
                     passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
                 } else {
@@ -194,7 +193,6 @@
             }
 
             function closeSelectReportContainer() {
-                document.getElementById("menuButton").style.display = "none"; // Ocultar el botón del menú antes de cerrar la pantalla de selección de informes
                 document.getElementById("selectReportContainer").classList.remove("show-menu"); // Ocultar el menú desplegable antes de cerrar la pantalla de selección de informes
                 document.getElementById("selectReportContainer").style.display = "none";
             }
