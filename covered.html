@@ -20,7 +20,7 @@
         .header {
             display: flex;
             align-items: center;
-            justify-content: center; /* Alinear el contenido en el centro horizontalmente */
+            justify-content: space-between; /* Alinear el contenido al extremo derecho e izquierdo */
             /* Alinear el contenido en el centro verticalmente */
             background-color: #f2f2f2; /* Color de fondo gris claro */
             padding: 10px; /* Espacio alrededor del contenido */
@@ -29,7 +29,7 @@
         .header img {
             width: 50px; /* Ajusta el ancho de la imagen según tus preferencias */
             height: auto;
-            margin-right: 10px; /* Espacio entre la imagen y el texto */
+            margin-left: 20px; /* Espacio entre la imagen y el texto */
         }
         .header h1 {
             font-size: 24px; /* Ajusta el tamaño del título según tus preferencias */
@@ -43,8 +43,8 @@
             width: 25px;
             height: 18px;
             cursor: pointer;
-            /* Amplio margen a la derecha */
-            margin-left: 20px;
+            /* Amplio margen a la izquierda */
+            margin-right: 20px;
         }
         .menu-button span {
             width: 100%;
@@ -88,14 +88,14 @@
 </head>
 <body>
     <div class="header">
+        <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
+        <h1>Covered Bonds Investor Presentation</h1>
         <!-- Botón de tres rayas horizontales -->
         <div class="menu-button" onclick="toggleDropdown()">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <h1>Covered Bonds Investor Presentation</h1>
-        <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
     </div>
     <!-- Desplegable -->
     <div class="dropdown-content" id="dropdownContent">
@@ -146,4 +146,3 @@
     </script>
 </body>
 </html>
-
