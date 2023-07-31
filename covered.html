@@ -141,7 +141,18 @@
             }
         }
 
-        // Funciones para mostrar Quarterly y Monthly
+        function handleKeyPress(event) {
+            if (event.keyCode === 13) { // 13 es el código de tecla para "Enter"
+                event.preventDefault();
+                checkPassword();
+            }
+        }
+
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdownContent");
+            dropdownContent.classList.toggle("active");
+        }
+
         function showQuarterly() {
             document.getElementById("quarterlyContainer").style.display = "block";
             document.getElementById("monthlyContainer").style.display = "none";
@@ -153,8 +164,6 @@
             document.getElementById("quarterlyContainer").style.display = "none";
             toggleDropdown();
         }
-
-        // Resto de las funciones JavaScript permanecen sin cambios
 
         // Agregar evento de clic al documento para cerrar el desplegable cuando se hace clic en cualquier otro lugar
         document.addEventListener("click", function(event) {
