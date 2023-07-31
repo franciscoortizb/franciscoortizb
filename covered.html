@@ -48,7 +48,7 @@
         #iframeContainer iframe {
             border: none; /* Eliminar el borde del iframe */
             width: 100%; /* Ajustar el ancho del iframe al 100% del contenedor */
-            height: calc(100vh - 50px); /* Ajustar la altura para que ocupe toda la pantalla excepto la altura del header */
+            height: calc(100vh - 50px - 50px); /* Ajustar la altura para que ocupe toda la pantalla excepto la altura del header y el margen inferior */
             max-width: 100%; /* Asegurar que el ancho máximo no supere el ancho de la pantalla */
         }
         /* Estilos para la pantalla de selección de informes */
@@ -71,6 +71,7 @@
         #quarterlyContainer, #monthlyContainer {
             width: calc(100% - 40px);
             margin: 20px;
+            margin-bottom: 50px; /* Agregar margen inferior de 50px */
         }
     </style>
 </head>
