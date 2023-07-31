@@ -20,7 +20,7 @@
         .header {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Alinear el contenido al extremo derecho e izquierdo */
+            justify-content: center; /* Alinear el contenido en el centro horizontalmente */
             /* Alinear el contenido en el centro verticalmente */
             background-color: #f2f2f2; /* Color de fondo gris claro */
             padding: 10px; /* Espacio alrededor del contenido */
@@ -34,8 +34,6 @@
         .header h1 {
             font-size: 24px; /* Ajusta el tamaño del título según tus preferencias */
             margin: 0; /* Elimina el margen predeterminado del título */
-            /* Centrar el título horizontalmente */
-            flex-grow: 1;
         }
         /* Estilos para el botón de tres rayas horizontales */
         .menu-button {
@@ -45,7 +43,8 @@
             width: 25px;
             height: 18px;
             cursor: pointer;
-            margin-right: 20px; /* Amplio margen a la derecha */
+            /* Amplio margen a la derecha */
+            margin-left: 20px;
         }
         .menu-button span {
             width: 100%;
@@ -89,8 +88,8 @@
 </head>
 <body>
     <div class="header">
+        <!-- Botón de tres rayas horizontales -->
         <div class="menu-button" onclick="toggleDropdown()">
-            <!-- Botón de tres rayas horizontales -->
             <span></span>
             <span></span>
             <span></span>
@@ -147,3 +146,4 @@
     </script>
 </body>
 </html>
+
