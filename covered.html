@@ -82,6 +82,22 @@
             width: 100%; /* Ajustar el ancho del iframe al 100% del contenedor */
             height: calc(100vh - 50px); /* Ajustar la altura para que ocupe toda la pantalla excepto la altura de la imagen del header */
         }
+        /* Estilos para la pantalla de selección de informes */
+        #selectReportContainer {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+        #selectReportContainer h2 {
+            margin-top: 20px;
+        }
+        #selectReportContainer button {
+            margin-top: 10px;
+        }
+        #selectReportContainer select {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -104,12 +120,15 @@
         </div>
     </div>
 
-    <!-- Desplegable Investor Presentations -->
-    <div class="dropdown-content active" id="dropdownContent" style="display: none;">
-        <h3>Investor Presentations</h3>
-        <p onclick="showQuarterly()">Quarterly</p>
-        <p onclick="showMonthly()">Monthly</p>
-        <!-- Agrega más elementos del menú aquí -->
+    <!-- Pantalla de selección de informes -->
+    <div id="selectReportContainer">
+        <h2>Select Report</h2>
+        <select id="reportSelect" onchange="changeReport()">
+            <option value="quarterly">Quarterly</option>
+            <option value="monthly">Monthly</option>
+            <!-- Agrega más opciones de informes aquí -->
+        </select>
+        <button onclick="closeSelectReportContainer()">Go</button>
     </div>
 
     <!-- Contenedor para Abanca Corporativo Completo Quarter -->
@@ -139,7 +158,7 @@
             if (password === "Beka") {
                 document.getElementById("passwordPrompt").style.display = "none";
                 document.getElementById("menuButton").style.display = "block"; // Mostrar el botón de tres rayas horizontales
-                document.getElementById("dropdownContent").style.display = "block"; // Mostrar el desplegable Investor Presentations
+                document.getElementById("selectReportContainer").style.display = "flex"; // Mostrar la pantalla de selección de informes
                 passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
             } else {
                 alert("Incorrect password. Please try again.");
@@ -158,16 +177,20 @@
             dropdownContent.classList.toggle("active");
         }
 
-        function showQuarterly() {
-            document.getElementById("quarterlyContainer").style.display = "block";
-            document.getElementById("monthlyContainer").style.display = "none";
-            toggleDropdown();
+        function changeReport() {
+            var reportSelect = document.getElementById("reportSelect");
+            var selectedReport = reportSelect.value;
+            if (selectedReport === "quarterly") {
+                document.getElementById("quarterlyContainer").style.display = "block";
+                document.getElementById("monthlyContainer").style.display = "none";
+            } else if (selectedReport === "monthly") {
+                document.getElementById("quarterlyContainer").style.display = "none";
+                document.getElementById("monthlyContainer").style.display = "block";
+            }
         }
 
-        function showMonthly() {
-            document.getElementById("monthlyContainer").style.display = "block";
-            document.getElementById("quarterlyContainer").style.display = "none";
-            toggleDropdown();
+        function closeSelectReportContainer() {
+            document.getElementById("selectReportContainer").style.display = "none";
         }
 
         // Agregar evento de clic al documento para cerrar el desplegable cuando se hace clic en cualquier otro lugar
