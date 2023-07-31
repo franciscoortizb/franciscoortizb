@@ -53,9 +53,8 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            top: 50%; /* Centrar verticalmente el desplegable */
-            left: 50%; /* Centrar horizontalmente el desplegable */
-            transform: translate(-50%, -50%); /* Centrar completamente el desplegable */
+            top: 50px; /* Ajusta la distancia desde el header hasta el desplegable */
+            right: 10px; /* Ajusta la distancia desde el borde derecho */
             background-color: #f9f9f9;
             padding: 10px;
             border: 1px solid #ddd;
@@ -104,6 +103,7 @@
             <button onclick="checkPassword()">Enter</button>
         </div>
     </div>
+
     <!-- Desplegable Investor Presentations -->
     <div class="dropdown-content active" id="dropdownContent" style="display: none;">
         <h3>Investor Presentations</h3>
