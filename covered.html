@@ -47,8 +47,9 @@
         }
         #iframeContainer iframe {
             width: 100%; /* Ajustar el ancho del iframe al 100% del contenedor */
-            max-width: 1200px; /* Ajustar el ancho máximo del iframe según tus preferencias */
-            height: calc(100vh - 50px); /* Ajustar la altura para que ocupe toda la pantalla excepto la altura del header */
+            height: 100vh; /* Ajustar la altura para que ocupe toda la pantalla */
+            max-width: 100%; /* Asegurar que el ancho máximo no supere el ancho de la pantalla */
+            border: none; /* Eliminar el borde del iframe */
         }
         /* Estilos para la pantalla de selección de informes */
         #selectReportContainer {
