@@ -53,8 +53,9 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            top: 50px; /* Ajusta la distancia desde el header hasta el desplegable */
-            right: 10px; /* Ajusta la distancia desde el borde derecho */
+            top: 50%; /* Centrar verticalmente el desplegable */
+            left: 50%; /* Centrar horizontalmente el desplegable */
+            transform: translate(-50%, -50%); /* Centrar completamente el desplegable */
             background-color: #f9f9f9;
             padding: 10px;
             border: 1px solid #ddd;
@@ -95,13 +96,6 @@
             <span></span>
         </div>
     </div>
-    <!-- Desplegable Investor Presentations -->
-    <div class="dropdown-content active" id="dropdownContent">
-        <h3>Investor Presentations</h3>
-        <p onclick="showQuarterly()">Quarterly</p>
-        <p onclick="showMonthly()">Monthly</p>
-        <!-- Agrega más elementos del menú aquí -->
-    </div>
 
     <div id="passwordPrompt">
         <p>Protected Content. Please enter the password to continue.</p>
@@ -110,6 +104,14 @@
             <button onclick="checkPassword()">Enter</button>
         </div>
     </div>
+    <!-- Desplegable Investor Presentations -->
+    <div class="dropdown-content active" id="dropdownContent" style="display: none;">
+        <h3>Investor Presentations</h3>
+        <p onclick="showQuarterly()">Quarterly</p>
+        <p onclick="showMonthly()">Monthly</p>
+        <!-- Agrega más elementos del menú aquí -->
+    </div>
+
     <!-- Contenedor para Abanca Corporativo Completo Quarter -->
     <div id="quarterlyContainer" style="display: none;">
         <h2 class="presentation-title">Abanca Corporativo Completo Quarter</h2>
@@ -137,6 +139,7 @@
             if (password === "Beka") {
                 document.getElementById("passwordPrompt").style.display = "none";
                 document.getElementById("menuButton").style.display = "block"; // Mostrar el botón de tres rayas horizontales
+                document.getElementById("dropdownContent").style.display = "block"; // Mostrar el desplegable
                 document.getElementById("quarterlyContainer").style.display = "block"; // Mostrar el contenido Quarterly por defecto
                 passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
             } else {
