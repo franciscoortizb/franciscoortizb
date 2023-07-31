@@ -97,8 +97,8 @@
             <span></span>
         </div>
     </div>
-    <!-- Desplegable -->
-    <div class="dropdown-content" id="dropdownContent">
+    <!-- Desplegable Investor Presentations -->
+    <div class="dropdown-content active" id="dropdownContent">
         <h3>Investor Presentations</h3>
         <p onclick="showQuarterly()">Quarterly</p>
         <p onclick="showMonthly()">Monthly</p>
@@ -112,17 +112,19 @@
             <button onclick="checkPassword()">Enter</button>
         </div>
     </div>
+    <!-- Contenedor para Abanca Corporativo Completo Quarter -->
     <div id="quarterlyContainer" style="display: none;">
         <h2 class="presentation-title">Abanca Corporativo Completo Quarter</h2>
-        <iframe title="Cover Pool Information"
+        <iframe title="Cover Pool Information Quarterly"
                 src="https://app.powerbi.com/reportEmbed?reportId=81ee266a-2799-4577-bba8-8f96aa531bdf&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
                 frameborder="0"
                 allowFullScreen="true">
         </iframe>
     </div>
+    <!-- Contenedor para Abanca Corporativo Completo Month -->
     <div id="monthlyContainer" style="display: none;">
         <h2 class="presentation-title">Abanca Corporativo Completo Month</h2>
-        <iframe title="Cover Pool Information"
+        <iframe title="Cover Pool Information Monthly"
                 src="https://app.powerbi.com/reportEmbed?reportId=0fc44c3d-8e91-4312-8000-b10d3dc820bd&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
                 frameborder="0"
                 allowFullScreen="true">
@@ -130,12 +132,15 @@
     </div>
 
     <script>
+        var passwordEntered = false; // Variable para saber si se ha introducido correctamente la contraseña
+
         function checkPassword() {
             var password = document.getElementById("passwordInput").value;
             if (password === "Beka") {
                 document.getElementById("passwordPrompt").style.display = "none";
-                document.getElementById("iframeContainer").style.display = "block";
                 document.getElementById("menuButton").style.display = "block"; // Mostrar el botón de tres rayas horizontales
+                document.getElementById("quarterlyContainer").style.display = "block"; // Mostrar el contenido Quarterly por defecto
+                passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
             } else {
                 alert("Incorrect password. Please try again.");
             }
@@ -167,10 +172,12 @@
 
         // Agregar evento de clic al documento para cerrar el desplegable cuando se hace clic en cualquier otro lugar
         document.addEventListener("click", function(event) {
-            var dropdownContent = document.getElementById("dropdownContent");
-            var menuButton = document.querySelector(".menu-button");
-            if (event.target !== dropdownContent && event.target !== menuButton) {
-                dropdownContent.classList.remove("active");
+            if (passwordEntered) {
+                var dropdownContent = document.getElementById("dropdownContent");
+                var menuButton = document.getElementById("menuButton");
+                if (event.target !== dropdownContent && event.target !== menuButton) {
+                    dropdownContent.classList.remove("active");
+                }
             }
         });
     </script>
