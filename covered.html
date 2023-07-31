@@ -19,7 +19,7 @@
         .header {
             display: flex;
             align-items: center;
-            justify-content: center; /* Centrar horizontalmente el contenido */
+            justify-content: space-between; /* Centrar horizontalmente el contenido */
             background-color: #f2f2f2; /* Color de fondo gris claro */
             padding: 10px; /* Espacio alrededor del contenido */
             width: 100%; /* Ocupar todo el ancho disponible */
@@ -54,12 +54,17 @@
         /* Estilos para la pantalla de selección de informes */
         #selectReportContainer {
             display: none;
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
+            position: absolute; /* Posición absoluta para superponerlo al contenido */
+            top: 50px; /* Posición superior 50px desde la parte superior */
+            right: 10px; /* Posición derecha 10px desde la parte derecha */
+            background-color: #f2f2f2; /* Color de fondo gris claro */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
         }
         #selectReportContainer h2 {
-            margin-top: 20px;
+            margin-top: 0;
+            margin-bottom: 10px;
         }
         #selectReportContainer button {
             margin-top: 10px;
@@ -73,6 +78,30 @@
             margin: 20px;
             margin-bottom: 70px; /* Agregar margen inferior de 50px */
         }
+        /* Estilos para el botón de menú */
+        #menuButton {
+            width: 30px;
+            height: 30px;
+            display: none; /* Ocultar el botón inicialmente */
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            margin-right: 10px; /* Espacio entre el botón y el título del header */
+        }
+        .menuBar {
+            width: 100%;
+            height: 3px;
+            background-color: #333;
+            border-radius: 2px;
+        }
+
+        /* Estilos para mostrar el botón después de ingresar correctamente la contraseña */
+        .show-menu #menuButton {
+            display: flex;
+        }
+        .show-menu #selectReportContainer {
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -80,6 +109,11 @@
         <div class="header">
             <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
             <h1>Covered Bonds Investor Presentation</h1>
+            <div id="menuButton" onclick="toggleMenu()">
+                <div class="menuBar"></div>
+                <div class="menuBar"></div>
+                <div class="menuBar"></div>
+            </div>
         </div>
 
         <div id="passwordPrompt">
@@ -132,7 +166,8 @@
                 var password = document.getElementById("passwordInput").value;
                 if (password === "Beka") {
                     document.getElementById("passwordPrompt").style.display = "none";
-                    document.getElementById("selectReportContainer").style.display = "flex"; // Mostrar la pantalla de selección de informes
+                    document.getElementById("menuButton").style.display = "block"; // Mostrar el botón del menú
+                    document.getElementById("selectReportContainer").classList.add("show-menu"); // Mostrar la pantalla de selección de informes y habilitar el botón del menú
                     passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
                 } else {
                     alert("Incorrect password. Please try again.");
@@ -159,7 +194,14 @@
             }
 
             function closeSelectReportContainer() {
+                document.getElementById("menuButton").style.display = "none"; // Ocultar el botón del menú antes de cerrar la pantalla de selección de informes
+                document.getElementById("selectReportContainer").classList.remove("show-menu"); // Ocultar el menú desplegable antes de cerrar la pantalla de selección de informes
                 document.getElementById("selectReportContainer").style.display = "none";
+            }
+
+            function toggleMenu() {
+                var menuContainer = document.getElementById("selectReportContainer");
+                menuContainer.style.display = menuContainer.style.display === "flex" ? "none" : "flex";
             }
         </script>
     </div>
