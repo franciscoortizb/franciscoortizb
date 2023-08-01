@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weekly Market Update</title>
+    <!-- Agregar el enlace al favicon -->
+    <link rel="icon" href="https://yt3.googleusercontent.com/ytc/AOPolaS4tp4U-dAeESAxOkBlk1rt1Yei7GbutKCm5aCd=s900-c-k-c0x00ffffff-no-rj">
+    <style>
+        body {
+            font-family: Gill Sans;
+            margin: 0; /* Eliminamos márgenes predeterminados */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centrar horizontalmente el contenido */
+            background-color: #f2f2f2; /* Color de fondo gris claro */
+            padding: 10px; /* Espacio alrededor del contenido */
+            width: 100%; /* Ocupar todo el ancho disponible */
+        }
+        .header img {
+            width: 50px; /* Ajusta el ancho de la imagen según tus preferencias */
+            height: auto;
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+        .header h1 {
+            font-size: 24px; /* Ajusta el tamaño del título según tus preferencias */
+            margin: 0; /* Elimina el margen predeterminado del título */
+        }
+        /* Ajustar el tamaño del título "Abanca Corporativo Completo Quarter" */
+        .presentation-title {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .download-button img {
+            width: 20px; /* Ajusta el ancho de la imagen del botón de descarga */
+            height: 20px; /* Ajusta la altura de la imagen del botón de descarga */
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        /* Estilos para el iframe */
+        #iframeContainer {
+            width: 100%; /* Ajustar el ancho del contenedor del iframe al 100% */
+            display: flex;
+            justify-content: center; /* Centrar horizontalmente el contenido del iframe */
+        }
+        #iframeContainer iframe {
+            border: none; /* Eliminar el borde del iframe */
+            width: 100%; /* Ajustar el ancho del iframe al 100% del contenedor */
+            height: calc(100vh - 50px - 70px); /* Ajustar la altura para que ocupe toda la pantalla excepto la altura del header y el margen inferior */
+            max-width: 100%; /* Asegurar que el ancho máximo no supere el ancho de la pantalla */
+        }
+        /* Estilos para la pantalla de selección de informes */
+        #selectReportContainer {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+        #selectReportContainer h2 {
+            margin-top: 20px;
+        }
+        #selectReportContainer button {
+            margin-top: 10px;
+        }
+        #selectReportContainer select {
+            margin-top: 10px;
+        }
+        /* Estilos para los contenedores de informes */
+        #quarterlyContainer, #monthlyContainer {
+            width: calc(100% - 40px);
+            margin: 20px;
+            margin-bottom: 70px; /* Agregar margen inferior de 50px */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://play-lh.googleusercontent.com/p8n-LjuwErRjEWDJh53wEwL_jDccfmDMXB547j_qifRJ_VWf0ofZ33l7sOMvxZtO0w=w600-h300-pc0xffffff-pd">
+            <h1>Covered Bonds Investor Presentation</h1>
+        </div>
+
+        <div id="passwordPrompt">
+            <p>Protected Content. Please enter the password to continue.</p>
+            <div class="password-container">
+                <input type="password" id="passwordInput" placeholder="Enter Password" onkeydown="handleKeyPress(event)">
+                <button onclick="checkPassword()">Enter</button>
+            </div>
+        </div>
+
+        <!-- Pantalla de selección de informes -->
+        <div id="selectReportContainer">
+            <h2>Select Report</h2>
+            <select id="reportSelect" onchange="changeReport()">
+                <option value="">Choose...</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="monthly">Monthly</option>
+                <!-- Agrega más opciones de informes aquí -->
+            </select>
+            <button onclick="closeSelectReportContainer()">Go</button>
+        </div>
+
+        <!-- Contenedor para Abanca Corporativo Completo Quarter -->
+        <div id="quarterlyContainer" style="display: none;">
+            <h2 class="presentation-title">Cover Pool Quarterly Information<a class="download-button" href="https://acgalacapital-my.sharepoint.com/personal/fortiz_bekafinance_com/Documents/Escritorio/Abanca/Microsoft-Power-BI-Storytelling.pptx?web=1" download><img src="https://static.vecteezy.com/system/resources/previews/001/187/075/non_2x/download-png.png"></a></h2>
+            <div id="iframeContainer">
+                <iframe title="Cover Pool - Quarterly Information"
+                        src="https://app.powerbi.com/reportEmbed?reportId=81ee266a-2799-4577-bba8-8f96aa531bdf&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
+                        frameborder="0"
+                        allowFullScreen="true">
+                </iframe>
+            </div>
+        </div>
+        <!-- Contenedor para Abanca Corporativo Completo Month -->
+        <div id="monthlyContainer" style="display: none;">
+            <h2 class="presentation-title">Cover Pool Monthly Information<a class="download-button" href="https://acgalacapital-my.sharepoint.com/personal/fortiz_bekafinance_com/Documents/Escritorio/Abanca/Microsoft-Power-BI-Storytelling.pptx?web=1" download><img src="https://static.vecteezy.com/system/resources/previews/001/187/075/non_2x/download-png.png"></a></h2>
+            <div id="iframeContainer">
+                <iframe title="Cover Pool - Monthly Information"
+                        src="https://app.powerbi.com/reportEmbed?reportId=0fc44c3d-8e91-4312-8000-b10d3dc820bd&autoAuth=true&ctid=2788b953-1971-4b82-9986-b668acbd5846"
+                        frameborder="0"
+                        allowFullScreen="true">
+                </iframe>
+            </div>
+        </div>
+
+        <script>
+            var passwordEntered = false; // Variable para saber si se ha introducido correctamente la contraseña
+
+            function checkPassword() {
+                var password = document.getElementById("passwordInput").value;
+                if (password === "Beka") {
+                    document.getElementById("passwordPrompt").style.display = "none";
+                    document.getElementById("selectReportContainer").style.display = "flex"; // Mostrar la pantalla de selección de informes
+                    passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
+                } else {
+                    alert("Incorrect password. Please try again.");
+                }
+            }
+
+            function handleKeyPress(event) {
+                if (event.keyCode === 13) { // 13 es el código de tecla para "Enter"
+                    event.preventDefault();
+                    checkPassword();
+                }
+            }
+
+            function changeReport() {
+                var reportSelect = document.getElementById("reportSelect");
+                var selectedReport = reportSelect.value;
+                if (selectedReport === "quarterly") {
+                    document.getElementById("quarterlyContainer").style.display = "block";
+                    document.getElementById("monthlyContainer").style.display = "none";
+                } else if (selectedReport === "monthly") {
+                    document.getElementById("quarterlyContainer").style.display = "none";
+                    document.getElementById("monthlyContainer").style.display = "block";
+                }
+            }
+
+            function closeSelectReportContainer() {
+                document.getElementById("selectReportContainer").style.display = "none";
+            }
+        </script>
+    </div>
+</body>
+</html>
