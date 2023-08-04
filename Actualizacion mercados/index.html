@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly Market Update</title>
+    <!-- Agregar el enlace al favicon -->
+    <link
+      rel="icon"
+      href="https://yt3.googleusercontent.com/ytc/AOPolaS4tp4U-dAeESAxOkBlk1rt1Yei7GbutKCm5aCd=s900-c-k-c0x00ffffff-no-rj"
+    />
+    <link rel="stylesheet" href="Style/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="https://yt3.googleusercontent.com/ytc/AOPolaS4tp4U-dAeESAxOkBlk1rt1Yei7GbutKCm5aCd=s900-c-k-c0x00ffffff-no-rj"
+        />
+        <h1>Weekly Market Update</h1>
+      </div>
+
+      <div id="passwordPrompt">
+        <p>Protected Content. Please enter the password to continue.</p>
+        <div class="password-container">
+          <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter Password"
+            onkeydown="handleKeyPress(event)"
+          />
+          <button onclick="checkPassword()">Enter</button>
+        </div>
+      </div>
+      <!-- Pantalla de selección de informes -->
+      <div id="selectReportContainer">
+        <h2>Select Report</h2>
+        <select id="reportSelect" onchange="changeReport()">
+          <option value="">Choose...</option>
+          <option value="noticias">News</option>
+          <option value="bonos">Sovereign bonds</option>
+          <option value="tipos">Interest rates</option>
+          <option value="variaciones">Índice de crédito y variaciones</option>
+          <!-- Agrega más opciones de informes aquí -->
+        </select>
+        <button onclick="closeSelectReportContainer()">Go</button>
+      </div>
+
+      <!-- Contenedor para Abanca Corporativo Completo Quarter -->
+      <div id="bonosContainer" style="display: none">
+        <div class="graph">
+          <div class="titulo">SPGB 3-yr</div>
+          <img src="Graphs/spgb3.png" alt="" />
+        </div>
+        <div class="graph">
+          <div class="titulo">
+            Evolución del bono español (SPGB) y bono alemán (DBR) a 10 años
+          </div>
+          <img src="Graphs/spgb_dbr.png" alt="" />
+        </div>
+        <div class="graph">
+          <div class="titulo">SPGB 5-yr</div>
+          <img src="Graphs/spgb5.png" alt="" />
+        </div>
+        <div class="graph">
+          <div class="titulo">Evolución IPC</div>
+          <img src="Graphs/ipc.png" alt="" />
+        </div>
+      </div>
+      <!-- Contenedor para Abanca Corporativo Completo Month -->
+      <div id="tiposContainer" style="display: none">
+        <div class="graph">
+          <div class="titulo">Swap 3-yr</div>
+          <img src="Graphs/swap3.png" alt="" />
+        </div>
+        <div class="graph">
+          <div class="titulo">Euribor 6 meses</div>
+          <img src="Graphs/euribor6.png" alt="" />
+        </div>
+        <div class="graph">
+          <div class="titulo">Swap 5-yr</div>
+          <img src="Graphs/swap5.png" alt="" />
+        </div>
+        <div class="graph">
+          <div class="titulo">Euribor 12 meses</div>
+          <img src="Graphs/euribor12.png" alt="" />
+        </div>
+      </div>
+
+      <!-- Contenedor para Abanca Corporativo Completo Month -->
+      <div id="variacionesContainer" style="display: none">
+        <div class="graph">
+          <div class="titulo">Evolución del Itraxx Crossover Europe</div>
+          <img src="Graphs/itraxx.png" alt="" />
+        </div>
+        <div class="graph">
+          <div class="titulo">Variación</div>
+          <img src="Graphs/variaciones.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var passwordEntered = false; // Variable para saber si se ha introducido correctamente la contraseña
+
+      function checkPassword() {
+        var password = document.getElementById("passwordInput").value;
+        if (password === "Beka") {
+          document.getElementById("passwordPrompt").style.display = "none";
+          document.getElementById("selectReportContainer").style.display =
+            "flex"; // Mostrar la pantalla de selección de informes
+          passwordEntered = true; // Indicar que se ha introducido correctamente la contraseña
+        } else {
+          alert("Incorrect password. Please try again.");
+        }
+      }
+
+      function handleKeyPress(event) {
+        if (event.keyCode === 13) {
+          // 13 es el código de tecla para "Enter"
+          event.preventDefault();
+          checkPassword();
+        }
+      }
+
+      function changeReport() {
+        var reportSelect = document.getElementById("reportSelect");
+        var selectedReport = reportSelect.value;
+
+        // Ocultar todos los contenedores de graph
+        document.getElementById("bonosContainer").style.display = "none";
+        document.getElementById("tiposContainer").style.display = "none";
+        document.getElementById("variacionesContainer").style.display = "none";
+
+        // Mostrar el contenedor de graph seleccionado con display: grid
+        if (selectedReport === "bonos") {
+          document.getElementById("bonosContainer").style.display = "grid";
+        } else if (selectedReport === "tipos") {
+          document.getElementById("tiposContainer").style.display = "grid";
+        } else if (selectedReport === "variaciones") {
+          document.getElementById("variacionesContainer").style.display =
+            "grid";
+        }
+      }
+
+      function closeSelectReportContainer() {
+        document.getElementById("selectReportContainer").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

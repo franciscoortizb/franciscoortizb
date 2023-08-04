@@ -1,0 +1,117 @@
+        body {
+            font-family: Gill Sans;
+            margin: 0; /* Eliminamos márgenes predeterminados */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centrar horizontalmente el contenido */
+            background-color: #f2f2f2; /* Color de fondo gris claro */
+            padding: 10px; /* Espacio alrededor del contenido */
+            width: 100%; /* Ocupar todo el ancho disponible */
+        }
+        .header img {
+            width: 50px; /* Ajusta el ancho de la imagen según tus preferencias */
+            height: auto;
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+        .header h1 {
+            font-size: 24px; /* Ajusta el tamaño del título según tus preferencias */
+            margin: 0; /* Elimina el margen predeterminado del título */
+        }
+        /* Ajustar el tamaño del título "Abanca Corporativo Completo Quarter" */
+        .presentation-title {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .download-button img {
+            width: 20px; /* Ajusta el ancho de la imagen del botón de descarga */
+            height: 20px; /* Ajusta la altura de la imagen del botón de descarga */
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        /* Estilos para el display */
+
+    
+        /* Estilos para la pantalla de selección de informes */
+        #selectReportContainer {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+        #selectReportContainer h2 {
+            margin-top: 20px;
+        }
+        #selectReportContainer button {
+            margin-top: 10px;
+        }
+        #selectReportContainer select {
+            margin-top: 10px;
+        }
+        /* Estilos para los contenedores de informes */
+        #bonosContainer, #tiposContainer, #variacionesContainer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 3dvb;
+            row-gap: 70px;
+            column-gap: 70px;
+          }
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit:fill;
+          }
+
+          .graph{
+            position: relative;
+            text-align: left;
+          }
+
+          .symbol { 
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 30px; /* Ajusta el tamaño del símbolo según tus preferencias */
+            height: 30px; /* Ajusta el tamaño del símbolo según tus preferencias */
+            opacity: 0.8; /* Ajusta la opacidad del símbolo según tus preferencias */
+            cursor: pointer;
+          }
+
+          .graph-title {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: red;
+            font-family: 'Nunito', sans-serif;
+            }
+
+.graph-line {
+    width: 100%;
+    height: 2px;
+    background-color: red;
+    margin: 0 auto 10px auto;
+}
+    .titulo {
+        font-weight: bold;
+        border-bottom: 1px solid rgb(146, 12, 12);
+        padding-bottom: 4px;
+        padding-left: 40px;
+        color: rgb(146, 12, 12);/* Ajusta este valor según el espacio deseado entre el título y la imagen */
+        width: 920px;
+        font-family: 'Nunito';
+        font-weight: bold;
+    }
+
+    
+
+
